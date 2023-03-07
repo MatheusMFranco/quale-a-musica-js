@@ -1,0 +1,74 @@
+:root {
+  --color-text: #a8dadc;
+  --color-text-hover: #fff;
+  --color-background: #242424;
+  --color-logo-hover: #a8dadc99;
+  --color-vanilla-logo-hover: #f7df1e99;
+  --color-read-the-docs: #bbb;
+  --color-button: #3a3a3a;
+  --color-button-hover: #a8dadc;
+  --color-button-focus: -webkit-focus-ring-color;
+  --color-background-light: #ffffff;
+  --color-text-light: #213547;
+  --color-text-hover-light: #747bff;
+  --color-button-light: #f9f9f9;
+}
+
+a {
+  color: var(--color-text);
+}
+
+a:hover {
+  color: var(--color-text-hover);
+}
+
+body {
+  background-color: var(--color-background);
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em var(--color-logo-hover));
+}
+
+.logo.vanilla:hover {
+  filter: drop-shadow(0 0 2em var(--color-vanilla-logo-hover));
+}
+
+.read-the-docs {
+  color: var(--color-read-the-docs);
+}
+
+button {
+  background-color: var(--color-button);
+  border-color: transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 500;
+  padding: 0.6em 1.2em;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  background-color: var(--color-button-hover);
+  border-color: var(--color-text);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto var(--color-button-focus);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-text: var(--color-text-light);
+    --color-text-hover: var(--color-text-hover-light);
+    --color-background: var(--color-background-light);
+    --color-button: var(--color-button-light);
+  }
+
+  a:hover {
+    color: var(--color-text-hover);
+  }
+}
