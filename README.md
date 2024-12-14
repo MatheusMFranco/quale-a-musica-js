@@ -1,5 +1,5 @@
 # Qualé a Música?
-Qualé is a quiz game to guess songs.
+Qualé is an app to find songs by voice.
 
 ## How to run?
 First, you should install the dependences:
@@ -12,22 +12,16 @@ npm:
 ```bash
 npm install
 ```
-To run the project, you should run this command line:
+To run the project, you should run this:
 
 ```bash
-vite build
+npx vite
 ```
 
-Then:
+To run tests, you should run this:
 
 ```bash
-vite preview
-```
-
-To run tests, you should run this command line:
-
-```bash
-vite run coverage
+npx vite run coverage
 ```
 
 
