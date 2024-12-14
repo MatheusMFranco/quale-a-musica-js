@@ -1,5 +1,9 @@
-import './style.css';
-import LoginPage from './pages/login/login.page';
+import HomePage from './pages/home/home.page';
 
-const login = new LoginPage();
-document.querySelector('#app').appendChild(login);
+if (window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  document.body.classList.add('dark');
+}
+
+const home = new HomePage();
+document.querySelector('#app').appendChild(home);

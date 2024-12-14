@@ -1,50 +1,50 @@
-import { VitePWA } from 'vite-plugin-pwa';
+import { defineConfig } from 'vite';
 
-export default {
+export default defineConfig({
   root: 'src',
   build: {
-    outDir: '../dist',
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    minify: 'esbuild',
+    target: 'esnext',
+    cssCodeSplit: true,
   },
-  resolve: { alias: { '@': '/src' } },
   server: {
-    host: true,
-    port: 8080,
+    port: 3000,
+    open: true,
+    hmr: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+    extensions: ['.js', '.ts', '.vue', '.json'],
+  },
+  plugins: [],
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['../src/.test/setup.js'],
-    include: ['**/(*.)?{test,spec}.js'],
-    exclude: [
-      'node_modules',
-      'dist',
-      '.idea',
-      '.git',
-      '.cache',
-      '.husky',
-      '.vscode',
-    ],
+    setupFiles: ['./src/setupTests.js'],
+    include: ['**/*.test.js', '**/*.spec.js'],
   },
-  plugins: [
-    VitePWA({
-      registerType: 'autoUpdate',
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "@/styles/variables.scss";',
       },
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
-      manifest: {
-        name: 'Qual é a Música?',
-        short_name: 'Quale',
-        description: 'A music quiz game',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: '/images/favicon.svg',
-            sizes: '192x192',
-            type: 'image/svg+xml',
-          },
-        ],
-      },
-    }),
-  ],
-};
+    },
+    postcss: {
+      plugins: [],
+    },
+  },
+  define: {
+    'process.env.NODE_ENV': '"development"',
+  },
+});
