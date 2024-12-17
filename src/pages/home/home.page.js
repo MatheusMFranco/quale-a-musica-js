@@ -1,20 +1,22 @@
-import css from '../../style.css';
+import findVideo from '../../services/youtube.service';
+import css from '../../style.css?inline';
 import SpeechRecognizer from '../../voice';
 
-const DEFAULT_TITLE = 'TURN YOUR MIC ON AND SAY THE SONG NAME';
-const template = document.createElement('template');
-template.innerHTML = /* html */ `
-    <style>
-        ${css}
-    </style>
-    <div class="row">
-      <div class="col"> 
-        <h1>
-          ${DEFAULT_TITLE}
-        </h1>
-      </div>
+const originalHtml = /* html */ `
+  <style>
+      ${css}
+  </style>
+  <div class="row">
+    <div class="col"> 
+      <h1>
+        TURN YOUR MIC ON AND SAY THE SONG NAME
+      </h1>
     </div>
+  </div>
 `;
+
+const template = document.createElement('template');
+template.innerHTML = originalHtml;
 
 export default class HomePage extends HTMLElement {
   constructor() {
@@ -30,17 +32,20 @@ export default class HomePage extends HTMLElement {
 
   render() {
     const shadowRoot = this.attachShadow({ mode: 'open' });
-    shadowRoot.appendChild(template.content.cloneNode(true));
+    shadowRoot.appendChild(template.content);
   }
 
-  handleSongTranscription(song) {
-    const h1 = this.shadowRoot.querySelector('h1');
+  async handleSongTranscription(song) {
+    await this.createVideoElement(song);
+    this.createTryAgainButton();
+  }
+
+  restartRecognition() {
+    window.location.reload();
+  }
+
+  createTryAgainButton() {
     const link = this.shadowRoot.querySelector('a');
-
-    if (h1) {
-      h1.textContent = song;
-    }
-
     if (!link) {
       const tryAgainLink = document.createElement('a');
       tryAgainLink.classList.add('button', 'outline', 'primary');
@@ -54,15 +59,21 @@ export default class HomePage extends HTMLElement {
     }
   }
 
-  restartRecognition() {
-    this.recognizer.start();
+  async createVideoElement(song) {
     const h1 = this.shadowRoot.querySelector('h1');
-    const link = this.shadowRoot.querySelector('a');
-    if (h1) {
-      h1.textContent = DEFAULT_TITLE;
-    }
-    if (link) { 
-      link.remove();
+    const video = await findVideo(song); 
+    if (video) {
+      h1.textContent = song;
+      const iframeElement = document.createElement('iframe');
+      iframeElement.id = 'video-iframe';
+      iframeElement.src = video;
+      iframeElement.width = '560';
+      iframeElement.height = '315';
+      iframeElement.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      iframeElement.allowFullscreen = true;
+      this.shadowRoot.appendChild(iframeElement);
+    } else {
+      h1.textContent = 'Video not found, try again!';
     }
   }
 }
