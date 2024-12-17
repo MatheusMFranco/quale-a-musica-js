@@ -58,8 +58,12 @@ export default class HomePage extends HTMLElement {
     this.recognizer.start();
     const h1 = this.shadowRoot.querySelector('h1');
     const link = this.shadowRoot.querySelector('a');
-    if (h1) h1.textContent = DEFAULT_TITLE;
-    if (link) link.remove();
+    if (h1) {
+      h1.textContent = DEFAULT_TITLE;
+    }
+    if (link) { 
+      link.remove();
+    }
   }
 }
 
