@@ -1,6 +1,6 @@
-import findVideo from '../../services/youtube.service';
+import findVideo from '../../services/youtube/youtube.service';
 import css from '../../style.css?inline';
-import SpeechRecognizer from '../../voice';
+import SpeechRecognizer from '../../core/voice/voice';
 
 const originalHtml = /* html */ `
   <style>
@@ -8,9 +8,7 @@ const originalHtml = /* html */ `
   </style>
   <div class="row">
     <div class="col"> 
-      <h1>
-        TURN YOUR MIC ON AND SAY THE SONG NAME
-      </h1>
+      <h1>TURN YOUR MIC ON AND SAY THE SONG NAME</h1>
     </div>
   </div>
 `;
