@@ -21,18 +21,23 @@ describe('SpeechRecognizer', () => {
         stop: vi.fn(),
         addEventListener: vi.fn((event, callback) => {
           if (event === 'result') {
-            this.onresult = callback; // Configura o callback do evento 'result'
+            this.onresult = callback;
           }
         }),
       };
     });
 
-    speechRecognizer = new SpeechRecognizer('pt-BR', mockCallback);
+    speechRecognizer = new SpeechRecognizer('en', mockCallback);
   });
 
   it('should initialize with correct language and callback', () => {
-    expect(speechRecognizer.lang).toBe('pt-BR');
+    expect(speechRecognizer.lang).toBe('en');
     expect(speechRecognizer.callback).toBe(mockCallback);
+  });
+
+  it('should initialize with english language and callback', () => {
+    const speaker = new SpeechRecognizer('pt-BR', mockCallback);
+    expect(speaker.lang).toBe('pt-BR');
   });
 
   it('should call start() and initialize SpeechRecognition', () => {
@@ -62,5 +67,16 @@ describe('SpeechRecognizer', () => {
     speechRecognizer.onSpeak(mockEvent);
 
     expect(mockCallback).toHaveBeenCalledWith('Hello World');
+  });
+
+  it('should do nothing', () => {
+    const speaker = new SpeechRecognizer('pt-BR', null);
+    speaker.onSpeak({
+      results: [
+        [
+          { transcript: 'Hello World' },
+        ],
+      ],
+    });
   });
 });
