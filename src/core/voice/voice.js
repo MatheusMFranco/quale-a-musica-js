@@ -1,5 +1,5 @@
 export default class SpeechRecognizer {
-    constructor(lang = 'pt-BR', callback) {
+    constructor(lang, callback) {
         this.lang = lang;
         this.callback = callback;
         window.SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;

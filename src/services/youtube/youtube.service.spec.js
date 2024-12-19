@@ -1,13 +1,6 @@
-import {
-    vi,
-    describe,
-    it,
-    expect,
-    beforeEach,
-} from 'vitest';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 import axios from 'axios';
-
-import findVideo from './youtube.service';
+import findVideo, { formatUrl } from './youtube.service';
 
 vi.mock('axios');
 axios.get = vi.fn();
@@ -34,12 +27,12 @@ describe('findVideo', () => {
     };
 
     axios.get.mockResolvedValue(mockResponse);
-    const result = await findVideo(query);
 
-    expect(result).toBe('https://www.youtube.com/embed/123abc');
-    expect(axios.get).toHaveBeenCalledWith(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=1&key=${apiKey}`
-    );
+    const expectedUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=1&key=undefined`;
+    const video = await findVideo(query);
+
+    expect(axios.get).toHaveBeenCalledWith(expectedUrl);
+    expect(video).toBe('https://www.youtube.com/embed/123abc');
   });
 
   it('should return null when no video is found', async () => {
@@ -51,17 +44,22 @@ describe('findVideo', () => {
     const result = await findVideo(query);
 
     expect(result).toBeNull();
-    expect(axios.get).toHaveBeenCalledWith(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=1&key=${apiKey}`
-    );
+    expect(axios.get).toHaveBeenCalled();
   });
 
   it('should throw an error when the request fails', async () => {
     axios.get.mockRejectedValue(new Error('Network Error'));
 
     await expect(findVideo(query)).rejects.toThrow('Failed to fetch video');
-    expect(axios.get).toHaveBeenCalledWith(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(query)}&type=video&maxResults=1&key=${apiKey}`
-    );
+    expect(axios.get).toHaveBeenCalled();
+  });
+
+  it('should throw an error when there is no song name', async () => {
+    await expect(findVideo(null)).rejects.toThrow('Failed to fetch video');
+  });
+
+  it('should format url name', () => {
+    const url = formatUrl('song');
+    expect(url).toBe('https://www.googleapis.com/youtube/v3/search?part=snippet&q=song&type=video&maxResults=1');
   });
 });

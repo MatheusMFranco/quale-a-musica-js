@@ -1,19 +1,8 @@
 import findVideo from '../../services/youtube/youtube.service';
-import css from '../../style.css?inline';
 import SpeechRecognizer from '../../core/voice/voice';
+import { DEFAULT_LANGUAGE, HOME_PAGE_ROUTE, MFE_ELEMENT, originalHtml, VIDEO_ID } from '../../constants';
 
-const originalHtml = /* html */ `
-  <style>
-      ${css}
-  </style>
-  <div class="row">
-    <div class="col"> 
-      <h1>TURN YOUR MIC ON AND SAY THE SONG NAME</h1>
-    </div>
-  </div>
-`;
-
-const template = document.createElement('template');
+const template = document.createElement(MFE_ELEMENT);
 template.innerHTML = originalHtml;
 
 export default class HomePage extends HTMLElement {
@@ -23,7 +12,7 @@ export default class HomePage extends HTMLElement {
   }
 
   init() {
-    this.recognizer = new SpeechRecognizer('pt-BR', this.handleSongTranscription.bind(this));
+    this.recognizer = new SpeechRecognizer(DEFAULT_LANGUAGE, this.handleSongTranscription.bind(this));
     this.recognizer.start();
     this.render();
   }
@@ -60,10 +49,10 @@ export default class HomePage extends HTMLElement {
   async createVideoElement(song) {
     const h1 = this.shadowRoot.querySelector('h1');
     const video = await findVideo(song); 
-    if (video) {
+    if (video && song) {
       h1.textContent = song;
       const iframeElement = document.createElement('iframe');
-      iframeElement.id = 'video-iframe';
+      iframeElement.id = VIDEO_ID;
       iframeElement.src = video;
       iframeElement.width = '560';
       iframeElement.height = '315';
@@ -76,4 +65,4 @@ export default class HomePage extends HTMLElement {
   }
 }
 
-customElements.define('home-page', HomePage);
+customElements.define(HOME_PAGE_ROUTE, HomePage);

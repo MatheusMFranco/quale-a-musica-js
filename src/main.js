@@ -8,7 +8,7 @@ if (window.matchMedia &&
     .add('dark');
 }
 
-const home = new HomePage();
+export const home = new HomePage();
 document
   .querySelector('#app')
   .appendChild(home);

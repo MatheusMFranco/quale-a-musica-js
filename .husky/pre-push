@@ -1,0 +1,1 @@
+npm run build && npm test -- --watchAll=false && npm run mutation && npm run release
