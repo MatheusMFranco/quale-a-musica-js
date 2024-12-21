@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.0.13](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.12...v0.0.13) (2024-12-21)
+### [0.0.14](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.12...v0.0.14) (2024-12-21)
 
 
 ### Features
@@ -13,6 +13,16 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * remove pnpm ([dbf3661](https://github.com/MatheusMFranco/quale-a-musica-js/commit/dbf366146f00bdb7a3c292520c18039a928224ac))
+
+### [0.0.13](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.12...v0.0.13) (2024-12-21)
+
+### Features
+
+- change dist folder ([d3ce75e](https://github.com/MatheusMFranco/quale-a-musica-js/commit/d3ce75e2bcdd66542a30a584b00412e5613388f1))
+
+### Bug Fixes
+
+- remove pnpm ([dbf3661](https://github.com/MatheusMFranco/quale-a-musica-js/commit/dbf366146f00bdb7a3c292520c18039a928224ac))
 
 ### 0.0.12 (2024-12-19)
 
