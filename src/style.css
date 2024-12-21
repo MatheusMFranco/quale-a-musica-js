@@ -11,7 +11,7 @@
   -webkit-text-size-adjust: 100%;
   --bg-color: #ffffff;
   --bg-secondary-color: #f3f3f6;
-  --color-primary: #14854F;
+  --color-primary: #14854f;
   --color-lightGrey: #d2d6dd;
   --color-grey: #747681;
   --color-darkGrey: #3f4144;
@@ -22,7 +22,7 @@
   --font-size: 1.6rem;
   --font-color: #333333;
   --font-family-sans: sans-serif;
-  --font-family-mono: monaco, "Consolas", "Lucida Console", monospace;
+  --font-family-mono: monaco, 'Consolas', 'Lucida Console', monospace;
 }
 
 body.dark {

@@ -20,10 +20,10 @@ describe('findVideo', () => {
         items: [
           {
             id: { videoId: '123abc' },
-            snippet: { title: 'Video Title', description: 'Video Description' }
-          }
-        ]
-      }
+            snippet: { title: 'Video Title', description: 'Video Description' },
+          },
+        ],
+      },
     };
 
     axios.get.mockResolvedValue(mockResponse);
@@ -37,7 +37,7 @@ describe('findVideo', () => {
 
   it('should return null when no video is found', async () => {
     const mockResponse = {
-      data: { items: [] }
+      data: { items: [] },
     };
 
     axios.get.mockResolvedValue(mockResponse);
@@ -60,6 +60,8 @@ describe('findVideo', () => {
 
   it('should format url name', () => {
     const url = formatUrl('song');
-    expect(url).toBe('https://www.googleapis.com/youtube/v3/search?part=snippet&q=song&type=video&maxResults=1');
+    expect(url).toBe(
+      'https://www.googleapis.com/youtube/v3/search?part=snippet&q=song&type=video&maxResults=1'
+    );
   });
 });
