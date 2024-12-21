@@ -1,6 +1,12 @@
 import findVideo from '../../services/youtube/youtube.service';
 import SpeechRecognizer from '../../core/voice/voice';
-import { DEFAULT_LANGUAGE, HOME_PAGE_ROUTE, MFE_ELEMENT, originalHtml, VIDEO_ID } from '../../constants';
+import {
+  DEFAULT_LANGUAGE,
+  HOME_PAGE_ROUTE,
+  MFE_ELEMENT,
+  originalHtml,
+  VIDEO_ID,
+} from '../../constants';
 
 const template = document.createElement(MFE_ELEMENT);
 template.innerHTML = originalHtml;
@@ -12,7 +18,10 @@ export default class HomePage extends HTMLElement {
   }
 
   init() {
-    this.recognizer = new SpeechRecognizer(DEFAULT_LANGUAGE, this.handleSongTranscription.bind(this));
+    this.recognizer = new SpeechRecognizer(
+      DEFAULT_LANGUAGE,
+      this.handleSongTranscription.bind(this)
+    );
     this.recognizer.start();
     this.render();
   }
@@ -38,7 +47,7 @@ export default class HomePage extends HTMLElement {
       tryAgainLink.classList.add('button', 'outline', 'primary');
       tryAgainLink.textContent = 'Try again';
       tryAgainLink.href = '#';
-      tryAgainLink.addEventListener('click', event => {
+      tryAgainLink.addEventListener('click', (event) => {
         event.preventDefault();
         this.restartRecognition();
       });
@@ -48,7 +57,7 @@ export default class HomePage extends HTMLElement {
 
   async createVideoElement(song) {
     const h1 = this.shadowRoot.querySelector('h1');
-    const video = await findVideo(song); 
+    const video = await findVideo(song);
     if (video && song) {
       h1.textContent = song;
       const iframeElement = document.createElement('iframe');
@@ -56,7 +65,8 @@ export default class HomePage extends HTMLElement {
       iframeElement.src = video;
       iframeElement.width = '560';
       iframeElement.height = '315';
-      iframeElement.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      iframeElement.allow =
+        'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
       iframeElement.allowFullscreen = true;
       this.shadowRoot.appendChild(iframeElement);
     } else {

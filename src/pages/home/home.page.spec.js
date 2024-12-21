@@ -31,7 +31,7 @@ globalThis.webkitSpeechRecognition = vi.fn().mockImplementation(() => {
       if (event === 'end') {
         this.onend = callback;
       }
-    })
+    }),
   };
 });
 
@@ -49,16 +49,16 @@ describe('HomePage', () => {
   it('should render the home page with a title and initial content', () => {
     const shadowRoot = homePage.shadowRoot;
     const h1 = shadowRoot.querySelector('h1');
-    
+
     expect(h1).toBeTruthy();
     expect(h1.textContent).toBe('TURN YOUR MIC ON AND SAY THE SONG NAME');
   });
 
   it('should reload the page when "Try again" button is clicked', async () => {
     const reloadSpy = vi.spyOn(homePage, 'restartRecognition');
-    
+
     homePage.createTryAgainButton();
-    
+
     const tryAgainButton = homePage.shadowRoot.querySelector('a');
     tryAgainButton.click();
 
@@ -66,8 +66,12 @@ describe('HomePage', () => {
   });
 
   it('should call createVideoElement and createTryAgainButton', async () => {
-    const createVideoElementSpy = vi.spyOn(homePage, 'createVideoElement').mockResolvedValue();
-    const createTryAgainButtonSpy = vi.spyOn(homePage, 'createTryAgainButton').mockImplementation(() => {});
+    const createVideoElementSpy = vi
+      .spyOn(homePage, 'createVideoElement')
+      .mockResolvedValue();
+    const createTryAgainButtonSpy = vi
+      .spyOn(homePage, 'createTryAgainButton')
+      .mockImplementation(() => {});
     const song = 'Song';
     await homePage.handleSongTranscription(song);
     expect(createVideoElementSpy).toHaveBeenCalledWith(song);
@@ -79,9 +83,11 @@ describe('HomePage', () => {
 
     const h1Mock = { textContent: '' };
     homePage.shadowRoot.querySelector = vi.fn().mockReturnValue(h1Mock);
-    
+
     vi.mock('../../services/youtube/youtube.service', () => ({
-      default: vi.fn().mockReturnValue('https://www.youtube.com/embed/videoId123'),
+      default: vi
+        .fn()
+        .mockReturnValue('https://www.youtube.com/embed/videoId123'),
     }));
     await homePage.createVideoElement(song);
     expect(h1Mock.textContent).toBe(song);
@@ -94,5 +100,4 @@ describe('HomePage', () => {
     const h1 = homePage.shadowRoot.querySelector('h1');
     expect(h1.textContent).toBe('Video not found, try again!');
   });
-
 });

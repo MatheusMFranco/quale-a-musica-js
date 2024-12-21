@@ -1,10 +1,4 @@
-import {
-    vi,
-    describe,
-    it,
-    expect,
-    beforeEach,
-} from 'vitest';
+import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 import SpeechRecognizer from './voice';
 
@@ -45,7 +39,10 @@ describe('SpeechRecognizer', () => {
     speechRecognizer.start();
 
     expect(recognitionSpy).toHaveBeenCalled();
-    expect(speechRecognizer.recognition.addEventListener).toHaveBeenCalledWith('result', expect.any(Function));
+    expect(speechRecognizer.recognition.addEventListener).toHaveBeenCalledWith(
+      'result',
+      expect.any(Function)
+    );
   });
 
   it('should call stop() and stop the recognition', () => {
@@ -57,11 +54,7 @@ describe('SpeechRecognizer', () => {
 
   it('should trigger the callback with the transcript when "result" event occurs', () => {
     const mockEvent = {
-      results: [
-        [
-          { transcript: 'Hello World' },
-        ],
-      ],
+      results: [[{ transcript: 'Hello World' }]],
     };
 
     speechRecognizer.onSpeak(mockEvent);
@@ -72,11 +65,7 @@ describe('SpeechRecognizer', () => {
   it('should do nothing', () => {
     const speaker = new SpeechRecognizer('pt-BR', null);
     speaker.onSpeak({
-      results: [
-        [
-          { transcript: 'Hello World' },
-        ],
-      ],
+      results: [[{ transcript: 'Hello World' }]],
     });
   });
 });
