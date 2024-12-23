@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.14...v0.0.15) (2024-12-23)
+
+
+### Bug Fixes
+
+* codecov folder ([6462b22](https://github.com/MatheusMFranco/quale-a-musica-js/commit/6462b22c093e37ca7a38394f92b4f6f8071e6565))
+* docker file with dist path ([6f2be1d](https://github.com/MatheusMFranco/quale-a-musica-js/commit/6f2be1dac1cee54a7219530fdc8ad53f8030f5db))
+
 ### [0.0.14](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.12...v0.0.14) (2024-12-21)
 
 ### Features
