@@ -2,13 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.0.15](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.14...v0.0.15) (2024-12-23)
+### [0.0.17](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.16...v0.0.17) (2024-12-24)
 
+### [0.0.16](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.15...v0.0.16) (2024-12-24)
+
+### Features
+
+- add favicon and a pretty style on page ([6b26f3d](https://github.com/MatheusMFranco/quale-a-musica-js/commit/6b26f3d4eea779bc0a41ed1da30084dce6a0b9ee))
+
+### [0.0.15](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.14...v0.0.15) (2024-12-23)
 
 ### Bug Fixes
 
-* codecov folder ([6462b22](https://github.com/MatheusMFranco/quale-a-musica-js/commit/6462b22c093e37ca7a38394f92b4f6f8071e6565))
-* docker file with dist path ([6f2be1d](https://github.com/MatheusMFranco/quale-a-musica-js/commit/6f2be1dac1cee54a7219530fdc8ad53f8030f5db))
+- codecov folder ([6462b22](https://github.com/MatheusMFranco/quale-a-musica-js/commit/6462b22c093e37ca7a38394f92b4f6f8071e6565))
+- docker file with dist path ([6f2be1d](https://github.com/MatheusMFranco/quale-a-musica-js/commit/6f2be1dac1cee54a7219530fdc8ad53f8030f5db))
 
 ### [0.0.14](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.12...v0.0.14) (2024-12-21)
 
