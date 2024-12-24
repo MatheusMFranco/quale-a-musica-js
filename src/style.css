@@ -133,7 +133,7 @@ h1 {
 }
 
 h1::before {
-  content: "🎤";
+  content: '🎤';
   font-size: 2rem;
   color: #ffdd00;
   margin-right: 0.5rem;
@@ -141,7 +141,7 @@ h1::before {
 }
 
 h1::after {
-  content: " 🎵";
+  content: ' 🎵';
   font-size: 2rem;
   color: #ffdd00;
   margin-left: 0.5rem;

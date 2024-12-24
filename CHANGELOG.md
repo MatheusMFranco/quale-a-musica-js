@@ -4,10 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.0.16](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.15...v0.0.16) (2024-12-24)
 
-
 ### Features
 
-* add favicon and a pretty style on page ([6b26f3d](https://github.com/MatheusMFranco/quale-a-musica-js/commit/6b26f3d4eea779bc0a41ed1da30084dce6a0b9ee))
+- add favicon and a pretty style on page ([6b26f3d](https://github.com/MatheusMFranco/quale-a-musica-js/commit/6b26f3d4eea779bc0a41ed1da30084dce6a0b9ee))
 
 ### [0.0.15](https://github.com/MatheusMFranco/quale-a-musica-js/compare/v0.0.14...v0.0.15) (2024-12-23)
 
