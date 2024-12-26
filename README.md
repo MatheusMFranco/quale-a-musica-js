@@ -10,12 +10,11 @@ Web application built that generates random programming quotes.
 
 ## Preview
 
-<img src="/prints/home.png" height="300" />
-<img src="/prints/video.png" height="300" />
+<img src="/prints/home.png" height="300" /><img src="/prints/video.png" height="300" />
 
 ## Features
 
-This web applicaton recognize your voice to get the song name and shows to you the Youtube video about the song.
+This web applicaton recognize your voice to get the song name and shows you the Youtube video.
 
 ## Stack
 
