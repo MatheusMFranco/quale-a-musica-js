@@ -10,15 +10,14 @@ Web application built that generates random programming quotes.
 
 ## Preview
 
-
 <img src="/prints/home.png" height="300" />
 <img src="/prints/video.png" height="300" />
 
 ## Features
+
 This web applicaton recognize your voice to get the song name and shows to you the Youtube video about the song.
 
 ## Stack
-
 
 - **Vitest**: Framework that enables the creation of unit tests;
 - **Stryker**: Mutation testing tool that helps improve code quality;
@@ -45,7 +44,9 @@ Add `.env` file on `src` folder and fill with this code with your [Youtube API K
 ```properties
 VITE_API_KEY=YOUR APP KEY HERE
 ```
+
 Then, run:
+
 ```bash
 npm install
 npm start
