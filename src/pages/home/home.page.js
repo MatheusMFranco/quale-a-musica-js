@@ -63,8 +63,8 @@ export default class HomePage extends HTMLElement {
       const iframeElement = document.createElement('iframe');
       iframeElement.id = VIDEO_ID;
       iframeElement.src = video;
-      iframeElement.width = '560';
-      iframeElement.height = '315';
+      iframeElement.width = '300';
+      iframeElement.height = '200';
       iframeElement.allow =
         'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
       iframeElement.allowFullscreen = true;
