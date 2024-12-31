@@ -4,7 +4,7 @@
 
 ![GitHub Tag](https://img.shields.io/github/v/tag/matheusmfranco/quale-a-musica-js) ![Vite](https://img.shields.io/badge/framework-Vite-brightgreen) [![codecov](https://codecov.io/gh/MatheusMFranco/quale-a-musica-js/branch/main/graph/badge.svg?token=KQNXQNZBY6)](https://codecov.io/gh/MatheusMFranco/quale-a-musica-js)
 
-Web application built that generates random programming quotes.
+Web application that find a video when you request by voice.
 
 </div>
 

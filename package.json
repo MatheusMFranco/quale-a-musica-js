@@ -1,7 +1,7 @@
 {
   "name": "quale-a-musica-js",
   "private": true,
-  "version": "0.0.18",
+  "version": "0.0.19",
   "type": "commonjs",
   "scripts": {
     "start": "vite",
